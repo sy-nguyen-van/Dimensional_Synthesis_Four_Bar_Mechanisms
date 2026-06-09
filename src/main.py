@@ -11,7 +11,7 @@ from src.optimizers import get_optimizer
 
 def main():
     parser = argparse.ArgumentParser(description="Synthesis of Four-Bar Mechanisms Optimization")
-    parser.add_argument('--case', type=str, default='Case4', choices=[f'Case{i}' for i in range(1, 6)],
+    parser.add_argument('--case', type=str, default='Case3', choices=[f'Case{i}' for i in range(1, 6)],
                         help='Case number to run')
     parser.add_argument('--algo', type=str, default='HCDJ', choices=['DE', 'Jaya', 'HCDJ'],
                         help='Optimization algorithm')

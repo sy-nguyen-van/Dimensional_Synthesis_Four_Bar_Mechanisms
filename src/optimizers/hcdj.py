@@ -89,14 +89,24 @@ class HCDJ:
             # Evaluate offspring
             fit_u = eval_penalty(self.objf, self.cons, u, self.alpha)
             
-            # Selection
-            replace_mask = fit_u < fit_x
+            # Global elitist selection: combine, sort, keep best N
+            combined_x = torch.cat((x, u), dim=0)
+            combined_fit = torch.cat((fit_x, fit_u), dim=0)
             
-            x = torch.where(replace_mask.unsqueeze(1), u, x)
-            fit_x = torch.where(replace_mask, fit_u, fit_x)
+            _, sorted_idx = torch.sort(combined_fit)
+            best_indices = sorted_idx[:self.popsize]
             
-            best_fit = torch.min(fit_x).item()
+            x = combined_x[best_indices]
+            fit_x = combined_fit[best_indices]
+            
+            best_idx = torch.argmin(fit_x)
+            best_fit = fit_x[best_idx].item()
             history.append(best_fit)
+            
+            best_organism = x[best_idx].unsqueeze(0)
+            best_cost = self.objf(best_organism).item()
+            best_cons = self.cons(best_organism).item()
+            print(f"Gen {gen+1}/{self.totalgen} | Cost: {best_cost:.4f} | Constraint: {best_cons:.4f} | Fit: {best_fit:.4f}")
             
         best_idx = torch.argmin(fit_x)
         return x[best_idx], fit_x[best_idx].item(), history

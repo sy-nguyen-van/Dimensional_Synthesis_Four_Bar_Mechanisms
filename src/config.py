@@ -19,8 +19,8 @@ def get_config(case_name: str, device: torch.device = torch.device('cpu')):
         
     elif case_name == 'Case2':
         nvars = 6
-        Popsize = 50
-        Totalgen = 100
+        Popsize = 100
+        Totalgen = 1000
         alpha = 1e3
         L1 = torch.zeros(4, device=device)
         H1 = 50 * torch.ones(4, device=device)
@@ -31,8 +31,8 @@ def get_config(case_name: str, device: torch.device = torch.device('cpu')):
 
     elif case_name == 'Case3':
         nvars = 10
-        Popsize = 50
-        Totalgen = 100
+        Popsize = 100
+        Totalgen = 1000
         alpha = 1e3
         L1 = torch.zeros(4, device=device)
         H1 = 50 * torch.ones(4, device=device)
@@ -45,7 +45,7 @@ def get_config(case_name: str, device: torch.device = torch.device('cpu')):
 
     elif case_name == 'Case4':
         nvars = 9
-        Popsize = 50
+        Popsize = 100
         Totalgen = 1000
         alpha = 1e4
         L1 = torch.zeros(4, device=device)
