@@ -13,7 +13,7 @@ def main():
     parser = argparse.ArgumentParser(description="Synthesis of Four-Bar Mechanisms Optimization")
     parser.add_argument('--case', type=str, default='Case3', choices=[f'Case{i}' for i in range(1, 6)],
                         help='Case number to run')
-    parser.add_argument('--algo', type=str, default='HCDJ', choices=['DE', 'Jaya', 'HCDJ'],
+    parser.add_argument('--algo', type=str, default='DRL', choices=['DE', 'Jaya', 'HCDJ', 'DRL'],
                         help='Optimization algorithm')
     parser.add_argument('--runs', type=int, default=1, help='Number of independent runs')
     parser.add_argument('--device', type=str, default='cpu', help='Device (cpu or cuda)')
