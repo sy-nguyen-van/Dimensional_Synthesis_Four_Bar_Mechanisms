@@ -19,5 +19,5 @@ Please refer to the individual paper for citations when using these codes or mod
 To get started, clone the repository to your local machine using:
 
 ```bash
-git clone https://github.com/sy-nguyen-van/DE_Jaya_Synthesis_Four_Bar_Mechanisms/
+git clone https://github.com/sy-nguyen-van/Dimensional_Synthesis_Four_Bar_Mechanisms/
 ```
